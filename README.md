@@ -47,7 +47,6 @@ Azure modules will include:
 - NSG rule handling
 - Azure Blob Storage setup
 
-Integrated `azure.sh` CLI planned for smooth switching between clouds.
 
 ---
 
@@ -75,7 +74,7 @@ bash MCloud.sh  # to run Any tools
 - Unzip and run:
 ```bash
 cd MCloud-main
-bash aws.sh
+bash MCloud.sh
 ```
 
 > ✅ **Before you begin**, ensure you’ve run:
