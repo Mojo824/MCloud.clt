@@ -100,13 +100,18 @@ aws configure
 ```text
 MCloud/
 ├── Aws/
+|   ├── aws.sh
 │   ├── Compute/
 │   ├── Network/
 │   ├── Storage/
 │   ├── View/
+|
 ├── Azure/              <-- Azure modules will go here
-├── aws.sh
-├── azure.sh  
+│   ├── azure.sh 
+│   ├──Compute/
+|   ├──Network/
+│   ├──Storage/
+|   
 ├── MCloud.sh                   <-- Main  launcher (placeholder)
 ├── LICENSE
 └── README.md
@@ -124,7 +129,7 @@ Want to contribute AWS or Azure modules? PRs and feedback are highly welcome.
 
 ---
 
-## 🛡️ License
+## 🛡️ License├──
 
 MIT License — see the `LICENSE` file.
 
