@@ -16,6 +16,7 @@ echo "                 ==== MCloud AWS Service ====                "
 echo "Starting..."
 sleep 2
 echo "Configuring  AWS ..."
+sleep 2
 if ! command -v aws >/dev/null 2>&1; then
     echo "AWS Cli not found !!"
     read -p "Do you want to install AWS CLI? (Y/N): " res
@@ -35,7 +36,7 @@ if ! command -v aws >/dev/null 2>&1; then
 else 
     echo "AWS cli Found"
 fi
-
+sleep 2
 echo "[*] Checking for boto3 module..."
 
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -59,13 +60,24 @@ fi
 
 aws configure
 
-echo -e "What you wanna do \n 1.New Deploy \n 2.View you Services (List)"
+echo -e "What you wanna do \n 1.New Deploy \n 2.Edit or Make changes to any service \n 3.View you Services (List) \n 4.Dangerzone "
 read -p "Your Response " resD
 
 if [[ "$resD" == "1" ]]; then 
     python3 $BASE_DIR/ServiceawsDM.py
 elif [[ "$resD" == "2" ]]; then 
+    python3 $BASE_DIR/Serviceawsedit.py
+elif [[ "$resD" == "3" ]]; then 
     python3 $BASE_DIR/ServiceawsLM.py
+elif [[ "$resD" == "4" ]]; then 
+    echo " Are you confirm to enter DangerZone (only y to confirm press any key to cancel ) "
+    read -p " " confirm
+    if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then 
+        python3 $BASE_DIR/DangerZone.py
+    else 
+        echo "Exitingggg.."
+        exit 1
+    fi
 else 
     echo "Invalid Input Please Re-run"
 fi 

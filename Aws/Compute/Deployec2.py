@@ -211,25 +211,34 @@ print(" To create or modify security groups, go to the 'Networking' section of M
 
 # Instance Type
 instance_types = [
-    "t2.micro [Free Tier : 1 GB RAM, 1 vCPU, EBS ]",
-    "t3.micro [Maybe Free IDK : 1 GB RAM, 2 vCPU (burstable), EBS ]",
-    "t3a.micro [General Purpose : 1 GB RAM, 2 vCPU (burstable), EBS ]",
-    "t2.small [General Purpose : 2 GB RAM, 1 vCPU, EBS ]",
-    "t3.small [General Purpose : 2 GB RAM, 2 vCPU (burstable), EBS ]",
-    "t2.medium [General Purpose : 4 GB RAM, 2 vCPU, EBS ]",
-    "t3.medium [General Purpose : 4 GB RAM, 2 vCPU (burstable), EBS ]",
-    "m5.large [Compute Optimized : 8 GB RAM, 2 vCPU, EBS ]",
-    "c5.large [Compute Optimized : 4 GB RAM, 2 vCPU, EBS ]",
-    "a1.medium [ARM-based : 2 GB RAM, 1 vCPU , EBS ]"
+    "t2.micro",
+    "t3.micro",
+    "t3a.micro",
+    "t2.small",
+    "t3.small",
+    "t2.medium",
+    "t3.medium",
+    "m5.large",
+    "c5.large",
+    "a1.medium"
 ]
 
 
-print("\nChoose an instance type (Like write their num 1 or 2 ..etc ):")
-for i, itype in enumerate(instance_types, 1):
-    print(f"{i}. {itype}")
+print ("\n[*] Choose an instance type (Like write their num 1 or 2 ..etc ): \n"
+        '\n1. t2.micro [Free Tier : 1 GB RAM, 1 vCPU, EBS ],'
+        '\n2. t3.micro [Maybe Free IDK : 1 GB RAM, 2 vCPU (burstable), EBS ],'
+        '\n3. t3a.micro [General Purpose : 1 GB RAM, 2 vCPU (burstable), EBS ],'
+        '\n4. t2.small [General Purpose : 2 GB RAM, 1 vCPU, EBS ],'
+        '\n5. t3.small [General Purpose : 2 GB RAM, 2 vCPU (burstable), EBS ],'
+        '\n6. t2.medium [General Purpose : 4 GB RAM, 2 vCPU, EBS ],'
+        '\n7. t3.medium [General Purpose : 4 GB RAM, 2 vCPU (burstable), EBS ],'
+        '\n8. m5.large [Compute Optimized : 8 GB RAM, 2 vCPU, EBS ],'
+        '\n9. c5.large [Compute Optimized : 4 GB RAM, 2 vCPU, EBS ],'
+        '\n10. a1.medium [ARM-based : 2 GB RAM, 1 vCPU , EBS ]'
+        )
 
 try:
-    choice = int(input("/n EBS means it doesn't come with local instance storage.\n t2/t3/t3a series are burstable (means : search yourself )  performance instances.\n [*] t2.micro is the **only confirmed** Free Tier eligible instance (check for t3.micro in your Region).\n Your choice: ")) - 1
+    choice = int(input("\n EBS means it doesn't come with local instance storage.\n [*] t2/t3/t3a series are burstable (means : search yourself )  performance instances.\n [*] t2.micro is the **only confirmed** Free Tier eligible instance (check for t3.micro in your Region).\n Your choice (by num eg. 1 or 2 or etc): ")) - 1
     instance_type = instance_types[choice] if 0 <= choice < len(instance_types) else "t2.micro"
 except:
     print("Invalid choice, using default 't2.micro'")
@@ -270,7 +279,7 @@ response = ec2.run_instances(
 )
 
 instance_id = response["Instances"][0]["InstanceId"]
-print(f"⏳ Waiting for instance {instance_id} to enter 'running' state...")
+print(f" [$] Waiting for instance {instance_id} to enter 'running' state...")
 
 instance = ec2_resource.Instance(instance_id)
 instance.wait_until_running()
@@ -288,10 +297,10 @@ print(f"AMI: {instance.image_id}")
 print(f"Key Pair: {instance.key_name}")
 
 # Ask about static website hosting
-host_website = input("\n Do you want to host a static website on this instance? (y/n): ").strip().lower()
-if host_website == "y":
-    print(" Redirecting to static website setup...")
-    fakeload(" Web Hosting")
-    print (" Feature coming soon ...")
-else:
-    print("🎉 Setup complete. You can now SSH into your instance and deploy your applications.")
+# host_website = input("\n Do you want to host a static website on this instance? (y/n): ").strip().lower()
+# if host_website == "y":
+#     print(" Redirecting to static website setup...")
+#     fakeload(" Web Hosting")
+#     print (" Feature coming soon ...")
+# else:
+print("🎉 Setup complete. You can now SSH into your instance and deploy your applications.")
