@@ -18,24 +18,24 @@ sleep 2
 echo "Configuring  AWS ..."
 sleep 2
 if ! command -v aws >/dev/null 2>&1; then
-    echo "AWS Cli not found !!"
+    echo "AWS CLI not found !!"
     read -p "Do you want to install AWS CLI? (Y/N): " res
-    if [[ "$res" == "y" || "Y" ]]; then
+
+    if [[ "$res" == "y" || "$res" == "Y" ]]; then
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
         sudo ./aws/install
-    
-
-    elif [[ "$res" == "n" || "N"]]; then 
-        echo "Install AWS cli manually \n Exitingg....... "
+    elif [[ "$res" == "n" || "$res" == "N" ]]; then 
+        echo -e "Install AWS CLI manually.\nExiting......."
         exit 1
     else 
-        echo "Invalid Input !! \n Exiting....."
+        echo -e "Invalid Input !!\nExiting....."
         exit 1
     fi
 else 
-    echo "AWS cli Found"
+    echo "AWS CLI found"
 fi
+
 sleep 2
 echo "[*] Checking for boto3 module..."
 
