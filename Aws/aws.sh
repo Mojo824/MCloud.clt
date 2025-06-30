@@ -44,7 +44,7 @@ if ! python3 -c "import boto3" 2>/dev/null; then
     echo "[!] boto3 not found. Attempting installation..."
     
     if command -v pip3 >/dev/null 2>&1; then
-        sudo pip3 install boto3
+        sudo pip3 install boto3 --break-system-packages 
     elif command -v pip >/dev/null 2>&1; then
         sudo pip install boto3
     else
