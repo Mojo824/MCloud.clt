@@ -14,4 +14,4 @@ cat << "EOF"
 EOF
 echo "MCloud Service for Azure Under Construction......."
 echo "see you soon"
-echo "                          -Mojo824
+echo "                          -Mojo824"

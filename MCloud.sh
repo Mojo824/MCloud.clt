@@ -13,7 +13,6 @@ cat << "EOF"
                        .                                           .
                        .  .  .  .  . .  .  .  .  .  .  .  .  .  .  . 
 EOF
-sleep 1
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 if ! ping -c 4 google.com > /dev/null 2>&1; then

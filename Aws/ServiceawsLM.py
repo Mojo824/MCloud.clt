@@ -48,7 +48,7 @@ services = {
     "2": ("Subnet", subnet),
     "3": ("Security Group", security_group),
     "4": ("VPC", vpc),
-    "5": ("Inbound/Outbound Rules", rules),
+    #"5": ("Inbound/Outbound Rules", rules),
     "6": ("S3", s3),
     "7": ("Exit", exit_program),
 }

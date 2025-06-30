@@ -296,7 +296,7 @@ print(f"Type: {instance.instance_type}")
 print(f"AMI: {instance.image_id}")
 print(f"Key Pair: {instance.key_name}")
 
-# Ask about static website hosting
+# Asking about static website hosting
 # host_website = input("\n Do you want to host a static website on this instance? (y/n): ").strip().lower()
 # if host_website == "y":
 #     print(" Redirecting to static website setup...")

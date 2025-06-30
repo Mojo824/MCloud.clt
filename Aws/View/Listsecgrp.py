@@ -1,5 +1,5 @@
 import boto3
-
+import time 
 def get_all_regions():
     ec2 = boto3.client("ec2")
     return [r["RegionName"] for r in ec2.describe_regions()["Regions"]]
