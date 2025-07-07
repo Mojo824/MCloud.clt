@@ -37,7 +37,7 @@ while [ 1 ]; do
     done      
     echo "Do you want to Run again ??"
     read -p "y/n  :" confirm
-    if [[ "$confirm" != "y" || "$confirm" != "Y" ]] ; then 
+    if [[ "$confirm" != "y" && "$confirm" != "Y" ]] ; then 
         break
     fi 
 done 
