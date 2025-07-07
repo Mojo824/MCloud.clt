@@ -47,14 +47,13 @@ Azure modules will include:
 - NSG rule handling
 - Azure Blob Storage setup
 
-
 ---
 
 ## ⚙️ Tools & Tech Stack
 
 - 🐍 Python 3.9+
 - ☁️ AWS SDK (`boto3`)
-- 🧩 CLI Shell Interface (`bash`)
+- 🧩 CLI Shell Interface (Python)
 - 🔐 IAM-authenticated operations
 - 🔜 Azure SDK (`azure-cli` + `azure-identity`)
 
@@ -66,16 +65,25 @@ Azure modules will include:
 ```bash
 git clone https://github.com/Mojo824/MCloud.git
 cd MCloud
-bash MCloud.sh  # to run Any tools
+python Install_MCloud.py  # to run the tool (Windows only)
 ```
-
+#And Enjoy using the tool by just typing MCloud to your Terminal or CMD
 ### 📥 Option 2: ZIP Download
 - Download ZIP: [Click here](https://github.com/Mojo824/MCloud/archive/refs/heads/main.zip)
 - Unzip and run:
 ```bash
 cd MCloud-main
-bash MCloud.sh
+python MCloud.py  # Windows only
 ```
+
+### 🚀 Option 3: Global Command (Windows Only)
+To run `MCloud` from anywhere in your command prompt:
+```bash
+python install_mcloud.py
+```
+> **Run as Administrator!**
+
+After installation, just type `MCloud` in any command prompt to launch the tool.
 
 > ✅ **Before you begin**, ensure you’ve run:
 ```bash
@@ -99,19 +107,20 @@ aws configure
 ```text
 MCloud/
 ├── Aws/
-|   ├── aws.sh
+│   ├── aws.py
 │   ├── Compute/
 │   ├── Network/
 │   ├── Storage/
 │   ├── View/
-|
+│
 ├── Azure/              <-- Azure modules will go here
-│   ├── azure.sh 
-│   ├──Compute/
-|   ├──Network/
-│   ├──Storage/
-|   
-├── MCloud.sh                   <-- Main  launcher (placeholder)
+│   ├── azure.py
+│   ├── Compute/
+│   ├── Network/
+│   ├── Storage/
+│
+├── MCloud.py           <-- Main launcher (Windows only)
+├── install_mcloud.py   <-- Windows installer for global command
 ├── LICENSE
 └── README.md
 ```
@@ -128,7 +137,7 @@ Want to contribute AWS or Azure modules? PRs and feedback are highly welcome.
 
 ---
 
-## 🛡️ License├──
+## 🛡️ License
 
 MIT License — see the `LICENSE` file.
 

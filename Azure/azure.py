@@ -1,4 +1,7 @@
-cat << "EOF"
+import time
+import platform
+
+BANNER = '''
                        .  .  .  .    .  .  .  .  .  .  .  .  .  .  . 
                        .                                           .
                        .   __  __  _____ _                 _       .
@@ -11,7 +14,17 @@ cat << "EOF"
                        .                    MCloud - Azure         .
                        .                                           .
                        .  .  .  .  . .  .  .  .  .  .  .  .  .  .  . 
-EOF
-echo "MCloud Service for Azure Under Construction......."
-echo "see you soon"
-echo "                          -Mojo824"
+'''
+
+def main():
+    if platform.system() != "Windows":
+        print("[!] This tool only supports Windows.")
+        return
+    print(BANNER)
+    print("MCloud Service for Azure is Under Construction.......")
+    print("see you soon")
+    print("                          -Mojo824")
+    time.sleep(2)
+
+if __name__ == "__main__":
+    main()
