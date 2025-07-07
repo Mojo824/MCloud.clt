@@ -223,7 +223,7 @@ instance_types = [
     "a1.medium"
 ]
 
-
+# Suggetion 
 print ("\n[*] Choose an instance type (Like write their num 1 or 2 ..etc ): \n"
         '\n1. t2.micro [Free Tier : 1 GB RAM, 1 vCPU, EBS ],'
         '\n2. t3.micro [Maybe Free IDK : 1 GB RAM, 2 vCPU (burstable), EBS ],'
