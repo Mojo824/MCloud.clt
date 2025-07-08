@@ -8,7 +8,8 @@ service_scripts = {
     'security group': 'Deletesecuritygrp.py',
     'subnet': 'Deletesubnet.py',
     'vpc': 'Deletevpc.py',
-    'key pairs':'Deletekeypairs.py'
+    'key pairs':'Deletekeypairs.py',
+    's3':'Deletes3.py'
 }
 
 aws_dir = os.path.dirname(os.path.abspath(__file__))
