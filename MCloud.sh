@@ -42,6 +42,36 @@ while [ 1 ]; do
     fi 
 done 
 
+# Add MCloud to /usr/local/bin if not already present or outdated
+BIN_PATH="/usr/local/bin/mcloud"
+SCRIPT_PATH="$BASE_DIR/MCloud.sh"
+if [ ! -f "$BIN_PATH" ] || ! cmp -s "$SCRIPT_PATH" "$BIN_PATH"; then
+    echo "Adding MCloud to /usr/local/bin (requires sudo)..."
+    sudo cp "$SCRIPT_PATH" "$BIN_PATH"
+    sudo chmod +x "$BIN_PATH"
+    echo "You can now run MCloud from anywhere using: mcloud"
+else
+    echo "MCloud is already available in /usr/local/bin."
+fi
+
+# Check for updates for the whole project (if using git)
+REPO_GIT_URL="https://github.com/Mojo824/MCloud.clt.git"
+if [ -d "$BASE_DIR/.git" ]; then
+    LOCAL_HASH=$(git -C "$BASE_DIR" rev-parse HEAD 2>/dev/null)
+    REMOTE_HASH=$(git ls-remote "$REPO_GIT_URL" HEAD | awk '{print $1}')
+    if [ "$LOCAL_HASH" != "$REMOTE_HASH" ]; then
+        echo "A new version of the MCloud project is available on GitHub."
+        read -p "Do you want to update the whole project now? (y/n): " update_all
+        if [[ "$update_all" == "y" || "$update_all" == "Y" ]]; then
+            sudo git -C "$BASE_DIR" pull
+            echo "Project updated to the latest version. Please restart the script."
+            exit 0
+        else
+            echo "Project update skipped."
+        fi
+    fi
+fi
+
 if [ ! -f ".gitHub_Star.flag" ]; then
 
     sleep 2
