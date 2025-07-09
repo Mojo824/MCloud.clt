@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cat << "EOF"
                        .  .  .  .    .  .  .  .  .  .  .  .  .  .  . 
                        .                                           .
@@ -24,6 +26,10 @@ echo "Starting..."
 sleep 2
 echo "Configuring  AWS ..."
 sleep 2
+if [ ".MCloudaws_installed.flag" ]; then 
+    echo "Welcome Again "
+fi
+
 if [ ! -f ".MCloudaws_installed.flag" ]; then
     echo "[*] Welcome to "MCLOUD Aws" for the first-time setup..."
     if ! command -v aws >/dev/null 2>&1; then
@@ -64,7 +70,7 @@ if [ ! -f ".MCloudaws_installed.flag" ]; then
     else
         echo "[✓] boto3 is already installed."
     fi
-    touch .MCloudaws_installed.flag
+    sudo touch .MCloudaws_installed.flag
 fi
 
 aws configure

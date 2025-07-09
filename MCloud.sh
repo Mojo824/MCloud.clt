@@ -1,4 +1,5 @@
 #!/bin/bash
+
 cat << "EOF"
                        .  .  .  .    .  .  .  .  .  .  .  .  .  .  . 
                        .                                           .
@@ -25,18 +26,26 @@ fi
 
 # Add MCloud to /usr/local/bin if not already present or outdated
 BIN_PATH="/usr/local/bin/MCloud"
+BIN_BASE="/usr/local/bin"
+OTHER_FOLDERS=("$BASE_DIR/Aws" "$BASE_DIR/Azure")
 SCRIPT_PATH="$BASE_DIR/MCloud.sh"
-if [ ! -f "$BIN_PATH" ] || ! cmp -s "$SCRIPT_PATH" "$BIN_PATH"; then
-    echo "Adding MCloud to /usr/local/bin (requires sudo)..."
-    sudo cp "$SCRIPT_PATH" "$BIN_PATH"
+if [ ! -f "$BIN_PATH" ] ; then
+    echo "Welcome to MCloud For the first time "
+    echo "First Time ?? (requires sudo)..."
+    sudo cp -r "$SCRIPT_PATH" "$BIN_PATH"
+    for folder in "${OTHER_FOLDERS[@]}"; do
+        sudo cp -r "$folder" "$BIN_BASE"
+    done
     sudo chmod +x "$BIN_PATH"
     echo "You can now run MCloud from anywhere using: MCloud"
 else
-    echo "MCloud is already available in /usr/local/bin."
+    echo "Welcome To MCloud"
 fi
 
+#### please help if you are here #####
 
-# # Check for updates for the whole project (if using git)
+
+# # Check for updates for the whole project (in github)
 # REPO_GIT_URL="https://github.com/Mojo824/MCloud.clt.git"
 # if [ -d "$BASE_DIR/.git" ]; then
 #     LOCAL_HASH=$(git -C "$BASE_DIR" rev-parse HEAD 2>/dev/null)
@@ -64,10 +73,12 @@ while [ 1 ]; do
         elif [[ "$res" == "2" ]]; then
             bash $BASE_DIR/Aws/aws.sh
             break
+            sleep 1
 
         else 
             echo -e "Invalid Input \n [*] Try Again !! "
         fi  
+        sleep 1
     done      
     echo "Do you want to Run again ??"
     read -p "y/n  :" confirm
@@ -88,7 +99,7 @@ if [ ! -f ".gitHub_Star.flag" ]; then
         echo "🎉 You're awesome! Opening GitHub..."
         xdg-open "https://github.com/Mojo824/MCloud.clt" 
         echo "Please give a star when it opens! ⭐"
-        touch .gitHub_Star.flag  
+        sudo touch .gitHub_Star.flag  
 
     else
         echo "No worries! Have a great day 😊"
